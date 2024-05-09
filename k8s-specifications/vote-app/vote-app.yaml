@@ -31,9 +31,7 @@ spec:
       volumes:
       - name: db-data
         emptyDir: {} 
-
 ---
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
