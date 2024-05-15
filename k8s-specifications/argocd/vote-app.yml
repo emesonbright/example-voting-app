@@ -1,11 +1,11 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argoCD_vote-app
+  name: argocd-vote-app
 spec:
   destination:
     name: ''
-    namespace: argo_CD_vote-app
+    namespace: argocd_vote-app
     server: 'https://kubernetes.default.svc'
   source:
     path: k8s-specifications/vote-app
