@@ -8,7 +8,7 @@ spec:
     namespace: argocd-vote-app
     server: 'https://kubernetes.default.svc'
   source:
-    path: k8s-specifications/vote-app
+    path: /k8s-specifications/argocd_vote-app
     repoURL: 'https://github.com/michaelkedey/example-voting-app.git'
     targetRevision: main
   sources: []
