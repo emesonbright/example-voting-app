@@ -5,7 +5,7 @@ metadata:
 spec:
   destination:
     name: ''
-    namespace: argocd_vote-app
+    namespace: argocd-vote-app
     server: 'https://kubernetes.default.svc'
   source:
     path: k8s-specifications/vote-app
