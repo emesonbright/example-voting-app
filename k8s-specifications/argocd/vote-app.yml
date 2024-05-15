@@ -1,17 +1,23 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: my-app
+  name: argoCD_vote-app
 spec:
-  project: default
-  source:
-    repoURL: https://github.com/michaelkedey/example-voting-app.git
-    targetRevision: main
-    path: k8s-specifications/vote-app
   destination:
-    server: https://kubernetes.default.svc
-    namespace: vote-app
+    name: ''
+    namespace: argo_CD_vote-app
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: k8s-specifications/vote-app
+    repoURL: 'https://github.com/michaelkedey/example-voting-app.git'
+    targetRevision: main
+  sources: []
+  project: default
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - PruneLast=true
+      - ApplyOutOfSyncOnly=true

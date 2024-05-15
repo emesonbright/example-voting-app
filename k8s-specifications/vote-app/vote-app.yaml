@@ -179,9 +179,9 @@ spec:
   type: NodePort
   ports:
   - name: "result-service"
-    port: 5003
+    port: 5005
     targetPort: 80
-    nodePort: 31003
+    nodePort: 31005
   selector:
     app: result
 
