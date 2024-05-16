@@ -1,0 +1,45 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: vote-app-ingress
+spec:
+  ingressClassName: ngrok
+  rules:
+    - host: {{ .Values.ingress.host }}
+      http:
+        paths:
+          - path: /db
+            pathType: Prefix
+            backend:
+              service:
+                name: db-service
+                port:
+                  number: 5432
+          - path: /redis
+            pathType: Prefix
+            backend:
+              service:
+                name: redis-service
+                port:
+                  number: 6379
+          - path: /result
+            pathType: Prefix
+            backend:
+              service:
+                name: result-service
+                port:
+                  number: 5001
+          - path: /vote
+            pathType: Prefix
+            backend:
+              service:
+                name: vote-service
+                port:
+                  number: 5000
+          - path: /argocd
+            pathType: Prefix
+            backend:
+              service:
+                name: argocd-server
+                port:
+                  number: 80
