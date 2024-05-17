@@ -1,2 +1,7 @@
-ingress:
-  host: happy-meerkat-lovely.ngrok-free.app
+controller:
+  service:
+    type: LoadBalancer
+    annotations:
+      service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
+  configSync:
+    enabled: true
