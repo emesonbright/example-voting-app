@@ -8,16 +8,18 @@ services:
   redis:
     image: redis
     volumes:
-      - redis-volume:/data 
+      - redis-volume:/data
+
   db:
     image: postgres:15-alpine
     volumes:
       - db-volume:/var/lib/postgresql/data
     env_file:
-          - .env
+      - .env
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+
   vote:
     build:
       context: ./vote
@@ -25,7 +27,8 @@ services:
     depends_on:
       - redis
     ports:
-      - 4000:80
+      - "4000:80"
+
   result:
     build:
       context: ./result
@@ -33,7 +36,8 @@ services:
     depends_on:
       - db
     ports:
-      - 4001:80
+      - "4001:80"
+
   worker:
     build:
       context: ./worker
@@ -41,3 +45,4 @@ services:
     depends_on:
       - redis
       - db
+
