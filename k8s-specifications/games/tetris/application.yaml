@@ -11,7 +11,7 @@ spec:
     path: example-voting-app
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: mytetrisapp
+    namespace: argocd
 
   syncPolicy:
     syncOptions:
