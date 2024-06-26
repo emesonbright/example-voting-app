@@ -1,22 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: tetris-app
-  namespace: argocd
+  name: example-voting-app
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/emesonbright/example-voting-app'
-    targetRevision: HEAD
-    path: example-voting-app
+    repoURL: 'https://github.com/emesonbright/example-voting-app.git'
+    targetRevision: main
+    path: k8s-specifications/games  # Ensure this path is relative
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: argocd
+    namespace: default
 
-  syncPolicy:
-    syncOptions:
-    - CreateNamespace=true
-
-    automated:
-      prune: true
-      selfHeal: true
